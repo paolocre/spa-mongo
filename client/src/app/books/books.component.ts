@@ -10,14 +10,15 @@ import { Book } from './book';
 })
 export class BooksComponent implements OnInit {
 
-  constructor(private apollo: Apollo) { }
-
   displayedColumns: string[] = ['title', 'author'];
   data: Book[] = [];
   resp: any = {};
   isLoadingResults = true;
 
-  ngOnInit(): void {
+  constructor(private apollo: Apollo) {
+  }
+
+  ngOnInit() {
     this.apollo.query({
       query: gql `{ books { _id, title, author } }`
     }).subscribe(res => {

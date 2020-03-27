@@ -3,28 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
-
 import { BooksComponent } from './books/books.component';
-import { DetailComponent } from './books/detail/detail.component';
 import { AddComponent } from './books/add/add.component';
+import { DetailComponent } from './books/detail/detail.component';
 import { EditComponent } from './books/edit/edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {
-  MatInputModule,
-  MatPaginatorModule,
-  MatProgressSpinnerModule,
-  MatSortModule,
-  MatTableModule,
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatFormFieldModule } from '@angular/material';
+import { MaterialModule } from './material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -32,8 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     BooksComponent,
-    DetailComponent,
     AddComponent,
+    DetailComponent,
     EditComponent
   ],
   imports: [
@@ -42,18 +31,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ApolloModule,
     HttpLinkModule,
+    FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -63,8 +45,8 @@ export class AppModule {
     apollo: Apollo,
     httpLink: HttpLink
   ) {
-    apollo.create({
-      link: httpLink.create({ uri: 'http://localhost:3000/graphql' }),
+     apollo.create({
+      link: httpLink.create({ uri: 'http://localhost:3000/graphql'}),
       cache: new InMemoryCache()
     });
   }

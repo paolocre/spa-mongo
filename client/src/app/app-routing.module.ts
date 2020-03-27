@@ -5,7 +5,6 @@ import { DetailComponent } from './books/detail/detail.component';
 import { AddComponent } from './books/add/add.component';
 import { EditComponent } from './books/edit/edit.component';
 
-
 const routes: Routes = [
   {
     path: 'books',

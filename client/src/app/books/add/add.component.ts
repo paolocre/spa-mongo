@@ -4,13 +4,6 @@ import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-
-@Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
-})
-
 const submitBook = gql`
   mutation addBook(
     $isbn: String!,
@@ -31,20 +24,17 @@ const submitBook = gql`
   }
 `;
 
+@Component({
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss']
+})
 export class AddComponent implements OnInit {
 
-  book: any = {
-    isbn: '',
-    title: '',
-    author: '',
-    description: '',
-    publisher: '',
-    publishedYear: null,
-    updateDate: null
-  };
+  book: any = { isbn: '', title: '', author: '', description: '', publisher: '', publishedYear: null, updatedDate: null };
   isLoadingResults = false;
-  rest: any = {};
-  bookFrom: FormGroup;
+  resp: any = {};
+  bookForm: FormGroup;
   isbn = '';
   title = '';
   author = '';
@@ -58,19 +48,19 @@ export class AddComponent implements OnInit {
     private formBuilder: FormBuilder
   ) { }
 
-  ngOnInit(): void {
-    this.bookFrom = this.formBuilder.group({
-      isbn: [null, Validators.required],
-      title: [null, Validators.required],
-      author: [null, Validators.required],
-      description: [null, Validators.required],
-      publisher: [null, Validators.required],
-      publishedYear: [null, Validators.required]
+  ngOnInit() {
+    this.bookForm = this.formBuilder.group({
+      isbn : [null, Validators.required],
+      title : [null, Validators.required],
+      author : [null, Validators.required],
+      description : [null, Validators.required],
+      publisher : [null, Validators.required],
+      publishedYear : [null, Validators.required]
     });
   }
 
   get f() {
-    return this.bookFrom.controls;
+    return this.bookForm.controls;
   }
 
   onSubmit(form: NgForm) {
