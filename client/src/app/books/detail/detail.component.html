@@ -20,14 +20,14 @@
         <dt>Publisher:</dt>
         <dd>{{book.publisher}}</dd>
         <dt>Published Year:</dt>
-        <dd>{{book.published_year}}</dd>
+        <dd>{{book.publishedYear}}</dd>
         <dt>Update Date:</dt>
-        <dd>{{book.updated_date}}</dd>
+        <dd>{{book.updatedDate}}</dd>
       </dl>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-flat-button color="primary" [routerLink]="['/books/edit', book._id]"><mat-icon>edit</mat-icon></a>
-      <a mat-flat-button color="warn" (click)="deleteBook(book._id)"><mat-icon>delete</mat-icon></a>
+      <a mat-flat-button color="primary" [routerLink]="['/books/edit', book.id]"><mat-icon>edit</mat-icon></a>
+      <!-- <a mat-flat-button color="warn" (click)="deleteBook(book.id)"><mat-icon>delete</mat-icon></a> -->
     </mat-card-actions>
   </mat-card>
 </div>

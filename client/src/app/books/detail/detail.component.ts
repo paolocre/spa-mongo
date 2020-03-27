@@ -7,7 +7,7 @@ import { Book } from '../book';
 const bookQuery = gql`
   query book($bookId: String) {
     book(id: $bookId) {
-      _id
+      id
       isbn
       title
       author

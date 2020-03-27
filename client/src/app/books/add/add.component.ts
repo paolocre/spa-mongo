@@ -59,11 +59,11 @@ export class AddComponent implements OnInit {
     });
   }
 
-  get f() {
+  f() {
     return this.bookForm.controls;
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: any) {
     this.isLoadingResults = true;
     const bookData = form.value;
     this.apollo.mutate({
@@ -79,7 +79,7 @@ export class AddComponent implements OnInit {
     }).subscribe(({ data }) => {
       console.log('got data', data);
       this.isLoadingResults = false;
-      this.router.navigate(['/books/detail/', data.addBook._id]);
+      // this.router.navigate(['/books/detail/', data.addBook.id]);
     }, (error) => {
       console.log('there was an error sending the query', error);
       this.isLoadingResults = false;
